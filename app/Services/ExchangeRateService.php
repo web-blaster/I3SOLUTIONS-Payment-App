@@ -3,17 +3,34 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 
 class ExchangeRateService
 {
 
-    
+
     public function rateToUsd(string $fromCurrency): string
     {
         $fromCurrency = strtoupper(trim($fromCurrency));
         if ($fromCurrency === 'USD') {
             return '1.0000000000';
+        }
+
+        /*
+        |--------------------------------------------------------------------------
+        | 1️⃣ Check database first
+        |--------------------------------------------------------------------------
+        */
+        $row = DB::table('exchange_rates')
+            ->where('base_currency', $fromCurrency)
+            ->where('quote_currency', 'USD')
+            ->orderByDesc('as_of')
+            ->first();
+
+        if ($row && isset($row->rate) && is_numeric($row->rate)) {
+            // Normalize to 10 decimals
+            return bcadd((string) $row->rate, '0', 10);
         }
 
         $cacheKey = "fx:{$fromCurrency}:USD";
