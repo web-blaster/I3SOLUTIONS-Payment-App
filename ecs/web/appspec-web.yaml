@@ -5,5 +5,5 @@ Resources:
       Properties:
         TaskDefinition: "ecs/web/taskdef-web.json"
         LoadBalancerInfo:
-          ContainerName: "laravel"
+          ContainerName: "laravel-web"
           ContainerPort: 80
