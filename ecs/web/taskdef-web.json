@@ -1,0 +1,37 @@
+{
+  "family": "laravel-web",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["EC2"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "arn:aws:iam::034362039061:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::034362039061:role/laravelTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "laravel",
+      "image": "REPLACED_BY_CODEDEPLOY",
+      "essential": true,
+      "portMappings": [
+        { "containerPort": 80, "protocol": "tcp" }
+      ],
+      "environment": [
+        { "name": "MODE", "value": "web" },
+        { "name": "APP_ENV", "value": "production" }
+      ],
+      "secrets": [
+        {
+          "name": "APP_KEY",
+          "valueFrom": "arn:aws:ssm:ap-south-1:034362039061:parameter/i3/prod/APP_KEY"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/laravel-web",
+          "awslogs-region": "ap-south-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
