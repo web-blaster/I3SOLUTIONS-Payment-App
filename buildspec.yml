@@ -4,7 +4,7 @@ env:
   variables:
     AWS_REGION: ap-south-1
     ECR_REPO: i3-solutions-production-app-image
-    CONTAINER_NAME: laravel
+    CONTAINER_NAME: laravel-web
 
 phases:
   pre_build:
