@@ -1,11 +1,11 @@
-# XESSGLOBAL-Productapp
+# I3-Solutions-Payment-App
 A Laravel-based product management application with REST API support, JWT authentication, and a web interface.
 ## Installation
 
 1. **Clone the repository**
 
-git clone https://github.com/web-blaster/XESSGLOBAL-Productapp.git
-cd XESSGLOBAL-Productapp
+git clone https://github.com/web-blaster/I3SOLUTIONS-Payment-App.git
+cd I3SOLUTIONS-Payment
 
 #Install PHP dependencies
 
@@ -58,3 +58,7 @@ Make sure to run npm run dev to compile CSS/JS using Vite.
 #User this email and password to access the system 
 'email'  - admin@example.com
 'password' - password123
+
+
+Notes :
+

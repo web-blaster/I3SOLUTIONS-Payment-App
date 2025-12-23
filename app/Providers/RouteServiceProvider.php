@@ -35,7 +35,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         RateLimiter::for('payment-upload-web', function (Request $request) {
-            return Limit::perHour(1)->by(
+            return Limit::perHour(10)->by(
                 $request->user()->id
             );
         });

@@ -1,0 +1,44 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_REGION: ap-south-1
+    ECR_REPO: i3-solutions-production-app-image
+    CONTAINER_NAME: laravel
+
+phases:
+  pre_build:
+    commands:
+      - set -e
+      - echo "Logging in to Amazon ECR..."
+      - ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+      - ECR_URI=${ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+      - aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_URI}
+      - COMMIT_SHA=${CODEBUILD_RESOLVED_SOURCE_VERSION}
+      - IMAGE_TAG=${COMMIT_SHA:0:7}
+      - IMAGE_URI=${ECR_URI}/${ECR_REPO}:${IMAGE_TAG}
+      - echo "IMAGE_URI=${IMAGE_URI}"
+
+  build:
+    commands:
+      - echo "Building Docker image..."
+      - docker build -t ${IMAGE_URI} .
+      - docker tag ${IMAGE_URI} ${ECR_URI}/${ECR_REPO}:latest
+
+  post_build:
+    commands:
+      - echo "Pushing Docker images..."
+      - docker push ${IMAGE_URI}
+      - docker push ${ECR_URI}/${ECR_REPO}:latest
+
+      # For ECS rolling deploy (worker)
+      - printf '[{"name":"%s","imageUri":"%s"}]' ${CONTAINER_NAME} ${IMAGE_URI} > imagedefinitions.json
+
+artifacts:
+  files:
+    - imagedefinitions.json
+    - ecs/web/appspec-web.yaml
+    - ecs/web/taskdef-web.json
+    - ecs/worker/appspec-worker.yaml
+    - ecs/worker/taskdef-worker.json
+  discard-paths: no

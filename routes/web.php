@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Storage;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/healthz', fn () => response('ok', 200));
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

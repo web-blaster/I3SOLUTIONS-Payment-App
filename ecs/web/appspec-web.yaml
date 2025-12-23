@@ -1,0 +1,9 @@
+version: 1
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "ecs/web/taskdef-web.json"
+        LoadBalancerInfo:
+          ContainerName: "laravel"
+          ContainerPort: 80
