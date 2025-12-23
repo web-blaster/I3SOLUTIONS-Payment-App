@@ -28,7 +28,7 @@ php artisan key:generate
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=xess_global_product_app
+DB_DATABASE=i3_solutions
 DB_USERNAME=root
 DB_PASSWORD=
 
@@ -39,10 +39,6 @@ php artisan migrate
 #Optionally, seed the database:
 
 php artisan db:seed
-
-#Run Vite for assets
-
-npm run dev
 
 
 #Start Laravel development server
@@ -61,4 +57,5 @@ Make sure to run npm run dev to compile CSS/JS using Vite.
 
 
 Notes :
+
 
