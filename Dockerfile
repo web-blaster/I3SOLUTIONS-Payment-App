@@ -29,7 +29,7 @@ RUN composer install --no-dev --prefer-dist --no-interaction --optimize-autoload
 RUN chown -R www-data:www-data storage bootstrap/cache \
  && chmod -R 777 storage bootstrap/cache
 
-# NGINX config need to update
+# NGINX config need to updatess 
 COPY docker/nginx/default.conf /etc/nginx/sites-available/default
 RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default \
  && mkdir -p /run/nginx
