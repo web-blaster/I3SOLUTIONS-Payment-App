@@ -27,7 +27,7 @@ RUN composer install --no-dev --prefer-dist --no-interaction --optimize-autoload
 
 # Laravel permissions
 RUN chown -R www-data:www-data storage bootstrap/cache \
- && chmod -R 775 storage bootstrap/cache
+ && chmod -R 777 storage bootstrap/cache
 
 # NGINX config
 COPY docker/nginx/default.conf /etc/nginx/sites-available/default
