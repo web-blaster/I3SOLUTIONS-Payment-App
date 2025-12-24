@@ -34,7 +34,7 @@ COPY docker/nginx/default.conf /etc/nginx/sites-available/default
 RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default \
  && mkdir -p /run/nginx
 
-# Entrypoint
+# Entrypoint set
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
