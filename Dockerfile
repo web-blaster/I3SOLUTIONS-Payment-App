@@ -1,6 +1,6 @@
 # ---------- 1) Build Vite assets ----------
 FROM node:20-bookworm-slim AS vitebuild
-WORKDIR /app
+WORKDIR /var/www/html
 
 COPY package*.json ./
 RUN npm ci || npm install
