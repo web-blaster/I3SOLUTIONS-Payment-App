@@ -39,7 +39,7 @@ RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default \
 # Entrypoint set
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-
+#expose 80
 EXPOSE 80
 
 ENTRYPOINT ["/entrypoint.sh"]
