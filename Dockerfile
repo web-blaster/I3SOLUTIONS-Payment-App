@@ -22,7 +22,7 @@ WORKDIR /var/www/html
 # Copy Laravel app
 COPY . .
 
-# Install PHP deps
+# Install PHP dependencies
 RUN composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
 
 # Laravel permissions
