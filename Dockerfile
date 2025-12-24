@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && docker-php-ext-enable redis \
   && rm -rf /var/lib/apt/lists/*
 
-# Composer
+# Composer install
 COPY --from=composer:2.2 /usr/bin/composer /usr/bin/composer
 
 # App directory
