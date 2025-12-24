@@ -113,4 +113,14 @@ Login
 File uploads
 to reduce abuse and protect system resources.
 
+CI/CD (AWS)
+
+CI/CD is automated using AWS CodePipeline and AWS CodeBuild.
+
+CodePipeline handles the end-to-end flow (source → build → deploy).
+
+CodeBuild builds the Docker image, tags it (commit + latest), and pushes it to Amazon ECR.
+
+The ECS service is then updated to deploy the new image automatically (rolling deployment).
+
 
