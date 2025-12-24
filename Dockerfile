@@ -22,14 +22,14 @@ WORKDIR /var/www/html
 # Copy Laravel app
 COPY . .
 
-# Install PHP dependencies
+# Install PHP deps
 RUN composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
 
 # Laravel permissions
 RUN chown -R www-data:www-data storage bootstrap/cache \
  && chmod -R 777 storage bootstrap/cache
 
-# NGINX config need to updatess 
+# NGINX config need to update
 COPY docker/nginx/default.conf /etc/nginx/sites-available/default
 RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default \
  && mkdir -p /run/nginx
@@ -38,7 +38,6 @@ RUN ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default \
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-#expose 80
 EXPOSE 80
 
 ENTRYPOINT ["/entrypoint.sh"]
