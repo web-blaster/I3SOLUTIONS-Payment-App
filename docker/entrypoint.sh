@@ -1,4 +1,5 @@
 #!/bin/sh
+##set
 set -e
 
 MODE="${MODE:-web}"
