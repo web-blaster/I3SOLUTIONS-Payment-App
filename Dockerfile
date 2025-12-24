@@ -1,3 +1,17 @@
+# ---------- 1) Build Vite assets ----------
+FROM node:20-bookworm-slim AS vitebuild
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci || npm install
+
+COPY . .
+RUN npm run build
+
+
+# build Vite assets
+RUN npm run build
+
 FROM php:8.2-fpm
 
 # Install system deps + nginx
