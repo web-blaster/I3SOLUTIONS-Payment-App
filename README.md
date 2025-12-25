@@ -7,17 +7,18 @@ A Laravel-based product management application with REST API support, JWT authen
 git clone https://github.com/web-blaster/I3SOLUTIONS-Payment-App.git
 cd I3SOLUTIONS-Payment
 
-#Install PHP dependencies
+# Install PHP dependencies
 
 composer install
 
-#Install Node.js dependencies
+# Install Node.js dependencies
 
 npm install
 
-#Copy .env file
+### Environment Configuration
 
-cp .env.example .env
+This project uses environment variables for configuration.
+Create a `.env` file based on `.env.example`.
 
 #set your application key:
 
@@ -41,7 +42,7 @@ php artisan migrate
 php artisan db:seed
 
 
-#Start Laravel development server
+# Start Laravel development server
 
 php artisan serve
 
