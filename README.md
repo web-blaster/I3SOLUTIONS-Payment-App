@@ -20,20 +20,12 @@ npm install
 This project uses environment variables for configuration.
 Create a `.env` file based on `.env.example`.
 
-#set your application key:
+# set your application key:
 
 php artisan key:generate
 
-#Set your .env database credentials:
 
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=i3_solutions
-DB_USERNAME=root
-DB_PASSWORD=
-
-#Run migrations:
+# Run migrations:
 
 php artisan migrate
 
@@ -46,13 +38,13 @@ php artisan db:seed
 
 php artisan serve
 
-#Assets
+# Assets
 
 All project assets (database and API collection) are available inside the assets folder.
 
 Make sure to run npm run dev to compile CSS/JS using Vite.
 
-#User this email and password to access the system 
+#  this email and password to access the system 
 'email'  - admin@example.com
 'password' - password123
 
