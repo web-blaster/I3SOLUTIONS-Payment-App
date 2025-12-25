@@ -44,7 +44,7 @@ All project assets (database and API collection) are available inside the assets
 
 Make sure to run npm run dev to compile CSS/JS using Vite.
 
-#  this email and password to access the system 
+# Use this email and password to access the system 
 'email'  - admin@example.com
 'password' - password123
 
