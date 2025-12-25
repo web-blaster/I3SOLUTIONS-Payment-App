@@ -33,6 +33,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Composer
 COPY --from=public.ecr.aws/docker/library/composer:2.2 /usr/bin/composer /usr/bin/composer
 
+# PHP upload limits
+COPY docker/php/uploads.ini /usr/local/etc/php/conf.d/uploads.ini
+
+
 # App directory
 WORKDIR /var/www/html
 
