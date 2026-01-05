@@ -40,6 +40,12 @@ class RouteServiceProvider extends ServiceProvider
             );
         });
 
+
+        RateLimiter::for('login', function (Request $request) {
+            return Limit::perMinute(5)->by(
+                $request->ip() . '|' . ($request->input('email') ?? '')
+            );
+        });
         $this->routes(function () {
             Route::middleware('api')
                 ->prefix('api')
