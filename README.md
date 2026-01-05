@@ -1,4 +1,4 @@
-# I3-Solutions-Payment-App
+### I3-Solutions-Payment-App
 A Laravel-based product management application with REST API support, JWT authentication, and a web interface.
 ## Installation
 
