@@ -1,17 +1,17 @@
 ### I3-Solutions-Payment-App
 A Laravel-based product management application with REST API support, JWT authentication, and a web interface.
-## Installation
+###  Installation
 
 1. **Clone the repository**
 
 git clone https://github.com/web-blaster/I3SOLUTIONS-Payment-App.git
 cd I3SOLUTIONS-Payment
 
-# Install PHP dependencies
+###  Install PHP dependencies
 
 composer install
 
-# Install Node.js dependencies
+### Install Node.js dependencies
 
 npm install
 
@@ -20,12 +20,11 @@ npm install
 This project uses environment variables for configuration.
 Create a `.env` file based on `.env.example`.
 
-# set your application key:
+###  set your application key:
 
 php artisan key:generate
 
-
-# Run migrations:
+###  Run migrations:
 
 php artisan migrate
 
@@ -34,41 +33,42 @@ php artisan migrate
 php artisan db:seed
 
 
-# Start Laravel development server
+###  Start Laravel development server
 
 php artisan serve
 
-# Assets
+###  Assets
 
 All project assets (database and API collection) are available inside the assets folder.
 
 Make sure to run npm run dev to compile CSS/JS using Vite.
 
-# Use this email and password to access the system 
+###  Use this email and password to access the system 
 'email'  - admin@example.com
 'password' - password123
 
-## Build the Docker image
+###  Build the Docker image
 
 docker build -t laravel-app .
 
-# Run the Laravel Web App on port 8001
+#### Run the Laravel Web App on port 8001
 
 docker run -d --name laravel-web -p 8001:80 --env-file .env -e MODE=web laravel-app
 
-# Run migrations (inside the web container)
+#### Run migrations (inside the web container)
 
 docker exec -it laravel-web php artisan migrate
 
-# (Optional) Seed:
+#### (Optional) Seed:
 
 docker exec -it laravel-web php artisan db:seed
 
-# Check container logs
-Web logs:
+#### Check container logs
+
+##### Web logs:
 
 docker logs -f laravel-web
 
-Worker logs:
+##### Worker logs:
 
 docker logs -f laravel-worker
