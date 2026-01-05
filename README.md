@@ -48,3 +48,27 @@ Make sure to run npm run dev to compile CSS/JS using Vite.
 'email'  - admin@example.com
 'password' - password123
 
+## Build the Docker image
+
+docker build -t laravel-app .
+
+# Run the Laravel Web App on port 8001
+
+docker run -d --name laravel-web -p 8001:80 --env-file .env -e MODE=web laravel-app
+
+# Run migrations (inside the web container)
+
+docker exec -it laravel-web php artisan migrate
+
+# (Optional) Seed:
+
+docker exec -it laravel-web php artisan db:seed
+
+# Check container logs
+Web logs:
+
+docker logs -f laravel-web
+
+Worker logs:
+
+docker logs -f laravel-worker
