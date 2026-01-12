@@ -55,6 +55,10 @@ docker build -t laravel-app .
 
 docker run -d --name laravel-web -p 8001:80 --env-file .env -e MODE=web laravel-app
 
+#### Run the Laravel worker - sqs
+docker run -d --name laravel-worker --env-file .env laravel-app:latest php artisan queue:work sqs --queue=payments-processing-sqs --sleep=3 --tries=3 --timeout=120
+
+
 #### Run migrations (inside the web container)
 
 docker exec -it laravel-web php artisan migrate
