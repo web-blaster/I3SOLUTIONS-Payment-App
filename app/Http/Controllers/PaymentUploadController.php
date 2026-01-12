@@ -43,11 +43,7 @@ class PaymentUploadController extends Controller
                 ->route('payments.index')
                 ->with('success', 'File uploaded. Processing started.');
         } catch (Throwable $e) {
-            Log::error('CSV upload failed (web)', [
-                'user_id' => $request->user()->id,
-                'error' => $e->getMessage(),
-            ]);
-
+          
             return back()->withErrors('Upload failed. Please try again later.');
         }
     }
